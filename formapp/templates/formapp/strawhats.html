@@ -1,0 +1,15 @@
+<!-- templates/create_user_profile.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create User Profile</title>
+</head>
+<body>
+    <h2>Create User Profile</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

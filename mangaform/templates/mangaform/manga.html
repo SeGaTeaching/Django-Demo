@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Characters</title>
+</head>
+<body>
+    <h1>Manga Characters</h1>
+
+    <!-- Dropdown or buttons to select manga -->
+    <label for="mangaFilter">Filter by Manga:</label>
+    <select id="mangaFilter" onchange="filterCharacters()">
+        <option value="all">All</option>
+        <option value="One Piece">One Piece</option>
+        <option value="Naruto">Naruto</option>
+        <option value="Dragonball">Dragonball</option>
+        <option value="Bleach">Bleach</option>
+    </select>
+
+    <!-- List of characters -->
+    <ul id="characterList">
+        {% for character in all %}
+            <li data-manga="{{ character.manga }}">
+                <strong>{{ character.character }}</strong> - {{ character.manga }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- JavaScript for filtering -->
+    <script>
+        function filterCharacters() {
+            // Get the selected manga
+            const selectedManga = document.getElementById("mangaFilter").value;
+            
+            // Get all character list items
+            const characterItems = document.querySelectorAll("#characterList li");
+
+            // Loop through each character item and show/hide based on the selected manga
+            characterItems.forEach(item => {
+                const characterManga = item.getAttribute("data-manga");
+                
+                if (selectedManga === "all" || characterManga === selectedManga) {
+                    item.style.display = "list-item";  // Show the item
+                } else {
+                    item.style.display = "none";  // Hide the item
+                }
+            });
+        }
+    </script>
+</body>
+</html>

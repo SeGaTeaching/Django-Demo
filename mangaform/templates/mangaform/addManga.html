@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Manga</title>
+</head>
+
+<body>
+    <h1>Add Manga Character</h1>
+    <!-- template.html -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} <!-- Renders the form fields and any validation errors automatically -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>
